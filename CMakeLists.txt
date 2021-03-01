@@ -7,11 +7,13 @@ project(${project_name})
 set(CMAKE_CXX_STANDARD 11)
 
 add_library(${project_name}-lib
-        src/AsyncExample.hpp
-        src/DemoApiClient.hpp
-        src/DemoApiModels.hpp
-        src/SimpleExample.hpp
-        src/AsyncExample.cpp)
+        ## src/AsyncExample.hpp
+        src/client/DemoApiClient.hpp
+        ## src/DemoApiModels.hpp
+        src/client/SimpleExample.hpp
+        ## src/AsyncExample.cpp
+        src/dto/DTOs.hpp
+        )
 
 ## link libs
 

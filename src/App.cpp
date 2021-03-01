@@ -1,8 +1,8 @@
 
-#include "AsyncExample.hpp"
-#include "SimpleExample.hpp"
+//#include "AsyncExample.hpp"
+#include "client/SimpleExample.hpp"
 
-#include "DemoApiClient.hpp"
+#include "client/DemoApiClient.hpp"
 
 #include "oatpp-curl/RequestExecutor.hpp"
 
@@ -15,16 +15,16 @@
 
 std::shared_ptr<oatpp::web::client::RequestExecutor> createOatppExecutor() {
   OATPP_LOGD("App", "Using Oat++ native HttpRequestExecutor.");
-  auto connectionProvider = oatpp::network::tcp::client::ConnectionProvider::createShared({"httpbin.org", 80});
+  auto connectionProvider = oatpp::network::tcp::client::ConnectionProvider::createShared({"localhost", 8000});
   return oatpp::web::client::HttpRequestExecutor::createShared(connectionProvider);
 }
-
+/*
 std::shared_ptr<oatpp::web::client::RequestExecutor> createCurlExecutor() {
   OATPP_LOGD("App", "Using oatpp-curl RequestExecutor.");
-  return oatpp::curl::RequestExecutor::createShared("http://httpbin.org/", false /* set verbose=true for dubug info */);
+  return oatpp::curl::RequestExecutor::createShared("http://httpbin.org/", false); //set verbose=true for dubug
 }
-
-void run(){
+*/
+void runClient(){
   
   /* Create ObjectMapper for serialization of DTOs  */
   auto objectMapper = oatpp::parser::json::mapping::ObjectMapper::createShared();
@@ -38,7 +38,7 @@ void run(){
   auto client = DemoApiClient::createShared(requestExecutor, objectMapper);
   
   SimpleExample::runExample(client);
-  AsyncExample::runExample(client);
+  //AsyncExample::runExample(client);
   
 }
 
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[]) {
 
   oatpp::base::Environment::init();
   
-  run();
+  runClient();
   
   /* Print how much objects were created during app running, and what have left-probably leaked */
   /* Disable object counting for release builds using '-D OATPP_DISABLE_ENV_OBJECT_COUNTERS' flag for better performance */
