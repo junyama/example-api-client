@@ -10,7 +10,7 @@ add_library(${project_name}-lib
         ## src/AsyncExample.hpp
         src/client/DemoApiClient.hpp
         ## src/DemoApiModels.hpp
-        src/client/SimpleExample.hpp
+        src/client/SimpleExample.cpp
         ## src/AsyncExample.cpp
         src/dto/DTOs.hpp
         )
