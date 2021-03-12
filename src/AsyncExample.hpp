@@ -63,7 +63,7 @@ private:
     SendCoroutine(const std::shared_ptr<DemoApiClient> client) : m_client(client) {}
 
     Action act() override {
-      return m_client->doPostAsync("<POST-DATA-HERE>").callbackTo(&SendDtoCoroutine::onResponse);
+      return m_client->doPostAsync("<POST-DATA-HERE>").callbackTo(&SendCoroutine::onResponse);
     }
     
     Action onResponse(const std::shared_ptr<Response>& response) {
