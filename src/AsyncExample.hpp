@@ -67,7 +67,7 @@ private:
     }
     
     Action onResponse(const std::shared_ptr<Response>& response) {
-      return response->readBodyToStringAsync().callbackTo(&SendDtoCoroutine::onBody);
+      return response->readBodyToStringAsync().callbackTo(&SendCoroutine::onBody);
     }
     
     Action onBody(const oatpp::String& body) {
